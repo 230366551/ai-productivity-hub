@@ -142,3 +142,19 @@
     color: var(--color-foreground);
   }
 }
+
+html, body { background-color: var(--color-background); }
+
+.markdown-body h1 { font-size: 1.25rem; font-weight: 600; margin: 0.75rem 0 0.5rem; }
+.markdown-body h2 { font-size: 1.1rem; font-weight: 600; margin: 0.75rem 0 0.5rem; }
+.markdown-body h3 { font-size: 1rem; font-weight: 600; margin: 0.5rem 0 0.25rem; }
+.markdown-body p { margin: 0.5rem 0; }
+.markdown-body ul { list-style: disc; padding-left: 1.25rem; margin: 0.5rem 0; }
+.markdown-body ol { list-style: decimal; padding-left: 1.25rem; margin: 0.5rem 0; }
+.markdown-body li { margin: 0.15rem 0; }
+.markdown-body strong { font-weight: 600; color: var(--color-foreground); }
+.markdown-body a { color: var(--color-primary); text-decoration: underline; }
+.markdown-body code { background-color: var(--color-muted); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.85em; }
+.markdown-body pre { background-color: var(--color-muted); padding: 0.75rem; border-radius: 8px; overflow-x: auto; margin: 0.5rem 0; }
+.markdown-body blockquote { border-left: 3px solid var(--color-primary); padding-left: 0.75rem; color: var(--color-muted-foreground); margin: 0.5rem 0; }
+.markdown-body hr { border-color: var(--color-border); margin: 0.75rem 0; }
