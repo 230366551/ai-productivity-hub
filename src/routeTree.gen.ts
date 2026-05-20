@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,6 +20,11 @@ import { Route as ApiChatRouteImport } from './routes/api.chat'
 const TasksRoute = TasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotesRoute = NotesRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/notes': typeof NotesRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
@@ -78,16 +87,25 @@ export interface FileRouteTypes {
     | '/'
     | '/email'
     | '/notes'
+    | '/research'
     | '/tasks'
     | '/api/chat'
     | '/api/generate'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/email' | '/notes' | '/tasks' | '/api/chat' | '/api/generate'
+  to:
+    | '/'
+    | '/email'
+    | '/notes'
+    | '/research'
+    | '/tasks'
+    | '/api/chat'
+    | '/api/generate'
   id:
     | '__root__'
     | '/'
     | '/email'
     | '/notes'
+    | '/research'
     | '/tasks'
     | '/api/chat'
     | '/api/generate'
@@ -97,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EmailRoute: typeof EmailRoute
   NotesRoute: typeof NotesRoute
+  ResearchRoute: typeof ResearchRoute
   TasksRoute: typeof TasksRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiGenerateRoute: typeof ApiGenerateRoute
@@ -109,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/tasks'
       fullPath: '/tasks'
       preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notes': {
@@ -153,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EmailRoute: EmailRoute,
   NotesRoute: NotesRoute,
+  ResearchRoute: ResearchRoute,
   TasksRoute: TasksRoute,
   ApiChatRoute: ApiChatRoute,
   ApiGenerateRoute: ApiGenerateRoute,
