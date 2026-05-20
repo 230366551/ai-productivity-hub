@@ -219,7 +219,7 @@ export function AiToolForm({
               onChange={(e) => setOutput(e.target.value)}
               className="bg-background/40 border-border resize-none font-mono text-xs leading-relaxed"
             />
-            <div className="rounded-md border border-border bg-background/40 p-4 overflow-auto prose prose-sm prose-invert max-w-none">
+            <div className="rounded-md border border-border bg-background/40 p-4 overflow-auto text-sm leading-relaxed markdown-body">
               <ReactMarkdown>{output}</ReactMarkdown>
             </div>
           </div>
